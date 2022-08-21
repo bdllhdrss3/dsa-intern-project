@@ -1,0 +1,35 @@
+{
+    "annotated": {
+        "twitter_annotated_total": 3825, 
+        "facebook_annotated_total": 5233, 
+        "total_annotated": 9058
+    },
+    "misinformation": {
+        "twitter": {
+            "not_fake": 3152,
+            "others": 380, 
+            "fake": 186, 
+            "partially_fake": 86
+        }, 
+        "facebook": {
+            "not_fake": 2252, 
+            "others": 1526, 
+            "fake": 1003, 
+            "partially_fake": 420
+        }
+    }, 
+    "sentiment": {
+        "twitter": {
+            "positive": 940, 
+            "negative": 1035, 
+            "neutral": 1828,
+            "others": 5
+        }, 
+        "facebook": {
+            "positive": 586, 
+            "negative": 2297, 
+            "neutral": 1693, 
+            "others": 28
+        }
+    }
+}

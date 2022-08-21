@@ -1,0 +1,198 @@
+{% load static %} {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="DSA uganda covid dashboard app" />
+    <meta name="author" content="Chodrine Mutebi" />
+    <meta name="author" content="Abdallah Lutaaya" />
+    <meta
+      name="keywords"
+      content="uganda, covid, dashbaord, data science africa, DSA, dsa, covid track, covid map"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" />
+    <title>TMCs</title>
+    <link href="{% static 'css/app.css' %}" type="text/css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:data' %}">About the Data</a></span
+                >
+              </li>
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:covid' %}"
+                    >Covid-19 Trends</a
+                  ></span
+                >
+              </li>
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:sentiment_analysis' %}"
+                    >Text Classification</a
+                  ></span
+                >
+              </li>
+              <li class="links">
+                <span><a href="{% url 'dashboard:blogs' %}">Blog</a></span>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="{% static 'images/icons/icon.png' %}"
+                    class="avatar img-fluid rounded me-1"
+                    alt="COAST"
+                  />
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="#the-team">
+                    <i class="align-middle me-1" data-feather="users"></i>
+                    The Team
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="blog">
+          <div class="blog-head">
+            <span class="head1">TMCs Blogs</span>
+
+            <div
+              class="card"
+              style="
+                width: 22rem;
+                margin: auto;
+                display: table;
+                margin-top: 20px;
+                margin-bottom: 20px;
+              "
+            >
+              <img src="{% static 'images/mis.jpg' %}" class="card-img-top" />
+              <div class="card-body">
+                <h5
+                  class="card-title"
+                  style="color: black; text-align: justify"
+                >
+                  COVID-19 Misinformation Detection and Sentiment Analysis
+                  Models from Luganda- English Code Mixed Social Media Data in
+                  Uganda
+                </h5>
+                <p
+                  style="
+                    text-align: justify;
+                    font-size: 12px;
+                    color: grey;
+                    margin-top: 10px;
+                  "
+                >
+                  The growth in the use of smartphones in Uganda has facilitated
+                  the increase in Internet usage and internet subscribers in the
+                  country. The Internet has provided a fertile ground to
+                  generate huge amounts of information on various web and mobile
+                  based social media platforms. Social media platforms have
+                  overtaken traditional media in facilitating social
+                  interactions on real time events...
+                </p>
+                <a href="{% url 'dashboard:blog2' %}" class="btn btn-primary"
+                  >Read More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer putAtBottom">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <a class="text-muted" href="https://air.ug/" target="_blank"
+                    ><strong>Makerere AI Lab</strong></a
+                  >
+                  &copy;
+                </p>
+              </div>
+              <div class="col-6 text-end">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a class="text-muted" href="https://air.ug/" target="_blank"
+                      >About the Lab</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://air.ug/projects/"
+                      target="_blank"
+                      >Projects</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://air.ug/publications/"
+                      target="_blank"
+                      >Publications</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://air.ug/contact/"
+                      target="_blank"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script> -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <!-- <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/ug/ug-all.js"></script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="{% static './js/js.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>

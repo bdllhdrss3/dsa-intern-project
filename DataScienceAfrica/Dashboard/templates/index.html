@@ -1,0 +1,447 @@
+{% load static %} {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="DSA uganda covid dashboard app" />
+    <meta name="author" content="Chodrine Mutebi" />
+    <meta name="author" content="Abdallah Lutaaya" />
+    <meta
+      name="keywords"
+      content="uganda, covid, dashbaord, data science africa, DSA, dsa, covid track, covid map"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" />
+    <title>TMCs</title>
+    <link href="{% static 'css/app.css' %}" type="text/css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:data' %}">About the Data</a></span
+                >
+              </li>
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:covid' %}"
+                    >Covid-19 Trends</a
+                  ></span
+                >
+              </li>
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:sentiment_analysis' %}"
+                    >Text Classification</a
+                  ></span
+                >
+              </li>
+              <li class="links">
+                <span><a href="{% url 'dashboard:blogs' %}">Blog</a></span>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="{% static 'images/icons/icon.png' %}"
+                    class="avatar img-fluid rounded me-1"
+                    alt="COAST"
+                  />
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="#the-team">
+                    <i class="align-middle me-1" data-feather="users"></i>
+                    The Team
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="bg-images">
+          <div class="big-image1">
+            <img src="{% static 'images/first.jpg' %}" alt="" class="bg-img" />
+            <div class="text-box">
+              <h1>
+                Text Mining of Social Media Luganda Data to Track Misinformation
+                and Perceptions Related to COVID-19 Transmission Mitigation
+                Strategies (TMCs)
+              </h1>
+            </div>
+            <div class="small-circle">
+              <div class="circle one"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="big-image2">
+            <img src="{% static 'images/data.jpg' %}" alt="" class="bg-img" />
+            <div class="text-box">
+              <h1>Data Collection</h1>
+              <!--                         <span></span>-->
+              <p>
+                The Data was extracted from Twitter timelines and Facebook pages
+                of the Minister of Health, Major media institutions, Major media
+                personalities and the top 50 Twitter and Facebook users in
+                Uganda. The Data collected was in Luganda, English and Codemix
+                of both English and Luganda
+              </p>
+
+              <div class="data">
+                <div class="face">
+                  <h2>430,075</h2>
+                  <span>From Facebook</span>
+                </div>
+                <div class="twi">
+                  <h2>15,354</h2>
+                  <span>From Twitter</span>
+                </div>
+              </div>
+            </div>
+            <div class="small-circle">
+              <div class="circle"></div>
+              <div class="circle one"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="big-image3">
+            <img
+              src="{% static 'images/annotation.JPG' %}"
+              alt=""
+              class="bg-img"
+            />
+            <div class="text-box">
+              <h1>Data Annotation and Analysis</h1>
+              <!--                         <span></span>-->
+              <p>
+                The goal of this process is to identify fake news and opinions
+                expressed about covid19 in Uganda. in this process the
+                annotators were identifying given attibutes which include
+                misinformation (Not Fake, Fake, Partially Fake and Others) and
+                sentiment analysis (Positive, Negative)
+              </p>
+              <a href="{% url 'dashboard:data'%}" class="btn btn-warning"
+                >Read More</a
+              >
+            </div>
+            <div class="small-circle">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle one"></div>
+              <div class="circle"></div>
+            </div>
+            <div class="img-ann1">
+              <img src="{% static 'images/mis.PNG' %}" alt="" class="img-img" />
+            </div>
+            <div class="img-ann2">
+              <img
+                src="{% static 'images/senti.PNG' %}"
+                alt=""
+                class="img-img"
+              />
+            </div>
+          </div>
+
+          <div class="big-image4">
+            <img src="{% static 'images/anno2.png' %}" alt="" class="bg-img" />
+            <div class="text-box">
+              <h1>Model Development and Data Visualization</h1>
+              <!--                         <span></span>-->
+              <p></p>
+
+              <div class="buttons">
+                <a
+                  href="{% url 'dashboard:sentiment_analysis'%}"
+                  class="btn btn-warning"
+                  style="margin: 10px"
+                  >About the Model</a
+                >
+                <a
+                  href="{% url 'dashboard:covid' %}"
+                  class="btn btn-danger"
+                  style="margin: 10px"
+                  >Covid-19 Trends</a
+                >
+              </div>
+            </div>
+            <div class="small-circle">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle one"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="intro">
+          <div class="problem">
+            <h1>The Problem</h1>
+            <p>
+              The ubiquity of social media has made it easier to spread
+              misinformation, rumors, and conspiracy theories around the
+              COVID-19 outbreak. There has not been much done to track and
+              evaluate the impact of the COVID-19 and the transmission
+              mitigation strategies put in place to combat its spread as a way
+              of informing Ugandan government policy.
+            </p>
+          </div>
+          <div class="pro-image">
+            <div class="pro-img">
+              <img src="{% static 'images/mis.jpg' %}" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="method">
+          <div class="pro-image">
+            <div class="pro-img">
+              <img src="{% static 'images/obj.png' %}" alt="" />
+            </div>
+          </div>
+          <div class="problem" style="margin-top: 40px">
+            <h1>Objective</h1>
+            <p>
+              The main objective of this research is to develop a misinformation
+              classification and detection model in order to analyze and enhance
+              the availability of reliable and trustworthy information around
+              COVID-19. This project will also explore social media data to
+              understand the perceptions and sentiments of people as they relate
+              to the Ugandan government COVID-19 transmission mitigation
+              strategies.
+            </p>
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="problem">
+            <h1>Methods</h1>
+            <p>
+              Social media data from Twitter and Facebook was labeled and used
+              to train an objectivity classifier. The feature engineering
+              process involved extracting features (n-grams, tf-idf, word2vec)
+              from the social media data which were then used to train the
+              baseline models. Machine Learning models with the best performance
+              for the Aspect-Based Sentiment Analysis tasks on the test set have
+              been deployed to classify covid-19 related text data which can be
+              displayed on a dashboard. Although social media data is freely
+              available, care was taken not to disclose any personal
+              information, for example, the names of people who post their views
+              on social media platforms. The resultant data set will be
+              published as a Mendeley data under the creative commons license
+              and a data paper has been published.
+            </p>
+          </div>
+          <div class="pro-image">
+            <div class="pro-img"></div>
+          </div>
+        </div>
+
+        <div class="out2">
+          <div class="pro-image">
+            <div class="pro-img">
+              <img src="{% static 'images/spread.png' %}" alt="" />
+            </div>
+            <a
+              href="{% url 'dashboard:sentiment_analysis'%}"
+              class="btn btn-warning check"
+              >Check it out</a
+            >
+          </div>
+          <div class="problem">
+            <h1>Outcome</h1>
+            <p>
+              To capture the sentiments and shifts in public sentiments towards
+              the different COVID-19 aspects, and use them to inform public
+              policy on the control of COVID-19.
+            </p>
+            <p>
+              This project addresses the problem of misinformation that could
+              harm the public by creating fear, increasing panic and angst,
+              threatening the physical safety of individuals and limiting the
+              effectiveness of official efforts to curb the pandemic. It
+              provides a system for identifying misinformation around COVID-19
+              on social media in Uganda. The dashboard and data mining modules
+              of the project provide a single point for trend analysis and
+              aspect-based sentiment analysis.
+            </p>
+          </div>
+        </div>
+
+        <div class="the-team" id="the-team">
+          <h1>The Team</h1>
+          <div class="images">
+            <ul>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/joyce.png' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>Joyce Nakatumba-Nabende, PhD</p>
+                  <p class="img-title">Principal Investigator</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/peter.png' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>Peter Nabende, PhD</p>
+                  <p class="img-title">NLP researcher</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/claire.png' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>Claire Babirye</p>
+                  <p class="img-title">Research Assistant</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/david.jpg' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>David Kabiito</p>
+                  <p class="img-title">Research Assistant</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/hewitt.png' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>Hewitt Tusiime</p>
+                  <p class="img-title">Research Assistant</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/mutebi.jpg' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>Chodrine Mutebi</p>
+                  <p class="img-title">Software Engineer</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="{% static 'images/abdalla.jpg' %}"
+                    alt=""
+                    class="circular-image"
+                  />
+                  <p>Abdallah Lutaaya</p>
+                  <p class="img-title">Intern (Software Engineer)</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <a class="text-muted" href="https://air.ug/" target="_blank"
+                    ><strong>Makerere AI Lab</strong></a
+                  >
+                  &copy;
+                </p>
+              </div>
+              <div class="col-6 text-end">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a class="text-muted" href="https://air.ug/" target="_blank"
+                      >About the Lab</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://air.ug/projects/"
+                      target="_blank"
+                      >Projects</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://air.ug/publications/"
+                      target="_blank"
+                      >Publications</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://air.ug/contact/"
+                      target="_blank"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script> -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <!-- <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/ug/ug-all.js"></script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="{% static './js/js.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>

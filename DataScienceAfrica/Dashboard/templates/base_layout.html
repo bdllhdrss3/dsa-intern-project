@@ -1,0 +1,187 @@
+{% load static %}
+{% load humanize %} 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="DSA uganda covid dashboard app" />
+    <meta name="author" content="Chodrine Mutebi" />
+    <meta name="author" content="Abdallah Lutaaya" />
+    <meta
+      name="keywords"
+      content="uganda, covid, dashbaord, data science africa, DSA, dsa, covid track, covid map"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="{% static 'images/icons/icon.png' %}" />
+    <title>TMCs</title>
+    <link href="{% static 'css/app.css' %}" type="text/css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+<body>
+	<div class="wrapper">
+		<nav id="sidebar", class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a href="{% url 'dashboard:index' %}" class="sidebar-brand">
+					<span class="align-middle">T M C s</span>
+				</a>
+				<ul class="sidebar-nav">
+				<li class="sidebar-header">Overview</li>
+
+                    <li class="sidebar-item" id="index">
+                        <a href="{% url 'dashboard:index' %}" class="sidebar-link" >
+                            <i class="align-middle" data-feather="home"></i>
+                            <span class="align-middle">Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item" id="data">
+                        <a href="{% url 'dashboard:data' %}" class="sidebar-link">
+                            <i class="align-middle" data-feather="hard-drive"></i>
+                            <span class="align-middle">The Data</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item" id="blogs">
+                        <a href="{% url 'dashboard:blogs' %}" class="sidebar-link">
+                            <i class="align-middle" data-feather="clipboard"></i>
+                            <span class="align-middle">Blog</span>
+                        </a>
+                    </li>
+
+					<li class="sidebar-header">About Covid-19</li>
+
+					<li class="sidebar-item" id="covid">
+						<a href="{% url 'dashboard:covid' %}" class="sidebar-link">
+							<i class="align-middle" data-feather="sliders"></i>
+							<span class="align-middle">Daily, Weekly Analysis</span>
+						</a>
+					</li>
+					<li class="sidebar-item" id="map">
+						<a href="{% url 'dashboard:map' %}" class="sidebar-link">
+							<i class="align-middle" data-feather="map"></i>
+							<span class="align-middle">Country-Wide Spread</span>
+						</a>
+					</li>
+					<li class="sidebar-header">Model Analysis</li>
+
+                    <li class="sidebar-item" id="sentiment">
+						<a href="{% url 'dashboard:sentiment_analysis' %}" id="sentiment" class="sidebar-link">
+							<i class="align-middle" data-feather="bar-chart"></i>
+							<span class="align-middle">Misinformation</span>
+						</a>
+					</li>
+				</ul>
+
+				<div class="sidebar-cta">
+					<div class="sidebar-cta-content  pb-2">
+						<strong class="d-inline-block">Update On Covid-19</strong>
+						<strong class="d-inline-block   text-sm" id="today"></strong>
+						<div class=" text-sm mb-0">
+							<table class="mb-0">
+								<tr>
+									<td>Vaccines:</td>
+									<td id="vaccines-today"></td>
+								</tr>
+								<tr>
+									<td>Cases:</td>
+									<td id="cases-today"></td>
+								</tr>
+								<tr>
+									<td>Recoveries: </td>
+									<td id="recoveries-today"></td>
+								</tr>
+								<tr>
+									<td>Deaths:</td>
+									<td id="deaths-today"></td>
+								</tr>
+							</table>
+						</div>
+				</div>
+
+			</div>
+		</nav>
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+					<i class="hamburger align-self-center"></i>
+				</a>
+				<span id="title"></span>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+								<img src="{% static 'images/icons/icon.png' %}"  class="avatar img-fluid rounded me-1" alt="COAST">
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="{% url 'dashboard:index' %}">
+									<i class="align-middle me-1" data-feather="users"></i>
+									The Team
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+			<!--this is where we insert the web page-->
+			{% block content %}
+
+            {% endblock %}
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div  class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://air.ug/" target="_blank"><strong>Makerere AI Lab</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://air.ug/" target="_blank">About the Lab</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://air.ug/projects/" target="_blank">Projects</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://air.ug/publications/" target="_blank">Publications</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://air.ug/contact/" target="_blank">Contact Us</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<script>
+			 url = "{% url 'dashboard:updates_api' %}"
+			 fetch(url)
+            	.then(response => response.json())
+            	.then(function(x){
+					document.getElementById("today").innerText = new Date(x.date).toString().slice(0,16)
+					document.getElementById("cases-today").innerText = x.cases.toLocaleString()
+					document.getElementById("recoveries-today").innerText = x.recoveries.toLocaleString()
+					document.getElementById("deaths-today").innerText = x.deaths.toLocaleString()
+					document.getElementById("vaccines-today").innerText = x.vaccines.toLocaleString()
+					
+
+             })
+             .catch(function(e){
+                console.log(e)
+             })
+			</script>
+
+		</div>
+	</div>
+</body>
+</html>

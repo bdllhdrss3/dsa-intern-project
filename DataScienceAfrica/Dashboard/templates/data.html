@@ -1,0 +1,138 @@
+{% extends './base_layout.html' %} {% load static %} {% block content %}
+<script>
+  document.getElementById("data").classList.add("active");
+</script>
+<main class="main">
+  <div class="outcome1 py-2">
+    <div class="problem1">
+      <h1>Data Collection</h1>
+      <p>
+        The Data was extracted from Twitter timelines and Facebook pages of the
+        Minister of Health, Major media institutions, Major media personalities
+        and the top 50 Twitter and Facebook users in Uganda.
+      </p>
+      <p>
+        The Data was filtered using the keywords like ssenyiga ,kolona, corona,
+        virus, obulwadde, corona, covid , abalwadde, ekirwadde, akawuka,
+        staysafeug, stayhome, tonsemberera, tokwatakudereva, vaccine).
+      </p>
+      <p>
+        The Data collected was in Luganda, English and Codemix of both English
+        and Luganda
+      </p>
+    </div>
+    <div class="pro-image1 py-">
+      <div id="container"></div>
+    </div>
+  </div>
+
+  <div class="outcome2">
+    <div class="pro-image2">
+      <div class="pro-img">
+        <img src="{% static 'images/anny.png' %}" alt="" />
+      </div>
+      <a href="https://doccano.herokuapp.com" class="btn btn-warning check"
+        >Try it</a
+      >
+    </div>
+    <div class="problem2">
+      <h1>Data Annotation</h1>
+      <h4>Doccano Tool</h4>
+      <p>
+        This tool (an open source text annotation tool) was used to annotated
+        the data.
+      </p>
+      <p>
+        The attributes that were used during the annotation process included the
+        Data source (FaceBook, Twitter), Language (English, Luganda, Codemixed),
+        Aspects (truck drivers, hospitals, vaccine, cases, SOPs, NPIs, Testing,
+        Border, Covid19_Impact, Presidential address, death, elections and
+        Covid19), Sentiment (Positive, Negative) and MisInformation (Not Fake,
+        Fake, Partially Fake, and Others).
+      </p>
+      <p>
+        This data was later reviewed to prevent bias and identify missing
+        annotations
+      </p>
+    </div>
+  </div>
+
+  <div class="outcome3">
+    <div style="text-align: center; margin: 20px">
+      <h1>Data Analysis</h1>
+      <p>
+        Most of the annotated data points were from Facebook and were written in
+        English
+      </p>
+    </div>
+    <div class="graphs">
+      <div class="graphs-one">
+        <div id="annotate"></div>
+      </div>
+      <div class="graphs-two">
+        <div id="annotation"></div>
+      </div>
+    </div>
+    <div style="text-align: center; margin: 20px">
+      <h3>Representation of Misinformation</h3>
+      <p>
+        Data from Facebook constituted almost 70% of the fake data. The “Others”
+        category contained those comments or post that could not be verified if
+        they are fake or not.
+      </p>
+    </div>
+    <div class="graphs">
+      <div class="graphs-one">
+        <div id="annotation2"></div>
+      </div>
+      <div class="graphs-two">
+        <div id="annotation3"></div>
+      </div>
+    </div>
+    <div style="text-align: center; margin: 20px">
+      <h3>Sentiment Analysis</h3>
+    </div>
+    <div style="text-align: center; margin: 20px">
+      <h4></h4>
+    </div>
+    <div class="graphs">
+      <div class="graphs-one">
+        <div id="annotation5"></div>
+      </div>
+      <div class="graphs-two">
+        <div id="annotation4"></div>
+      </div>
+    </div>
+    <div style="text-align: center; margin: 20px">
+      <h4></h4>
+    </div>
+    <div class="graphs">
+      <div class="graphs-three">
+        <div id="facebook_sentiment_analysis"></div>
+      </div>
+      <div class="graphs-four">
+        <div id="twitter_sentiment_analysis"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/data.js' %}"></script>
+<script>
+  var url = "{% url 'dashboard:dashboard_api' %}";
+  document.getElementById("data").classList.add("active");
+  document.getElementById("title").innerText = "Data Collected and Annotated";
+</script>
+<style>
+  .text-justify {
+    text-align: justify;
+  }
+</style>
+{% endblock %}

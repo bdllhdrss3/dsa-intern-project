@@ -1,0 +1,1 @@
+web: gunicorn DataScienceAfrica.wsgi --log-file -

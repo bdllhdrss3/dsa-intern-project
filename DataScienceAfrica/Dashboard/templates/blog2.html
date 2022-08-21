@@ -1,0 +1,436 @@
+{% load static %} {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="DSA uganda covid dashboard app" />
+    <meta name="author" content="Chodrine Mutebi" />
+    <meta name="author" content="Abdallah Lutaaya" />
+    <meta
+      name="keywords"
+      content="uganda, covid, dashbaord, data science africa, DSA, dsa, covid track, covid map"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" />
+    <title>TMCs</title>
+    <link href="{% static 'css/app.css' %}" type="text/css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:data' %}">About the Data</a></span
+                >
+              </li>
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:covid' %}"
+                    >Covid-19 Trends</a
+                  ></span
+                >
+              </li>
+              <li class="links">
+                <span
+                  ><a href="{% url 'dashboard:sentiment_analysis' %}"
+                    >Text Classification</a
+                  ></span
+                >
+              </li>
+              <li class="links">
+                <span><a href="{% url 'dashboard:blogs' %}">Blog</a></span>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="{% static 'images/icons/icon.png' %}"
+                    class="avatar img-fluid rounded me-1"
+                    alt="COAST"
+                  />
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="#the-team">
+                    <i class="align-middle me-1" data-feather="users"></i>
+                    The Team
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+            <div class="intro2">
+                <div class="problemX">
+                     <h1>
+                         COVID-19 Misinformation Detection and Sentiment Analysis Models from Luganda - English
+                         Code Mixed Social Media Data in Uganda
+                     </h1>
+
+                    <div class="imagesX">
+                        <ul>
+                            <li>
+                                <div>
+                                    <img src="{% static 'images/joyce.png' %}" alt="" class="circular-imagex">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="{% static 'images/peter.png' %}" alt="" class="circular-imagex">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="{% static 'images/claire.png' %}" alt="" class="circular-imagex">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="{% static 'images/david.jpg' %}" alt="" class="circular-imagex">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="{% static 'images/hewitt.png' %}" alt="" class="circular-imagex">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="{% static 'images/mutebi.jpg' %}" alt="" class="circular-imagex">
+                                </div>
+                            </li>
+                        </ul>
+                        <div style="margin-top: -20px; color: #3477a9">
+                            Joyce Nabende-Nakatumba, (PhD), Peter Nabende, (PhD), Claire Babirye, David Kabito, Hewiit Tusiime, Chodrine Mutebi
+                        </div>
+                        <div style="margin-top: 10px">
+                            <span style="color: #9a6b03">Feb 24, 2022</span> . <span style="color: #3477a9">10 min read</span>
+                        </div>
+                    </div>
+
+                    <p>
+                        The growth in the use of smartphones in Uganda has facilitated the increase in Internet
+                        usage and internet subscribers in the country. The Internet has provided a fertile ground
+                        to generate huge amounts of information on various web and mobile based social
+                        media platforms. Social media platforms have overtaken traditional media in facilitating
+                        social interactions on real time events. The ever increasing number of social media
+                        users has resulted in an increase in social media content. This content has proven to be
+                        helpful for decision making. However, since there are no restrictions and limitations on
+                        the content posted on social media platforms, it has turned out that some of the posted
+                        content is invalid, inaccurate, potentially and intentionally harmful. This poses a need to
+                        develop solutions that can be used to detect false information and misinformation in
+                        social media text. Several studies have sought and continue to detect negative and
+                        inaccurate content shared on social media platforms. However, most of this research
+                        has focused on the English language and thus these applications can not be used in
+                        contexts that include low resourced languages like Luganda, a major local language in
+                        Uganda that is also commonly used on social media platforms.
+                    </p>
+                    <p style="margin-top: 50px">
+                        The focus of this research was on building a system for misinformation detection and sentiment
+                        analysis from social media text on Ugandan social media platforms. Our focus was mainly around
+                        social media content related to the current COVID-19 pandemic in Uganda. This was important to
+                        understand perceptions of Ugandans related to Uganda Government’s COVID-19 transmission
+                        mitigation strategies from social media data.  As a first step, we collected data related
+                        to COVID-19 from Facebook and Twitter using open source scraping tools. The data was analyzed
+                        and some of the key findings were that the text was in English, Luganda or a codemix of English
+                        and other local Ugandan languages like Luganda and Runyankole. For privacy reasons, the data was
+                        anonymized to remove any personal identification information.
+                        To prepare the dataset for machine learning tasks, the data was annotated using the open source
+                        Doccano annotation tool. Prior to the data annotation task, annotation guidelines were defined
+                        which guided the annotation activity.
+                    </p>
+
+                    <p style="margin-top: 50px">
+                        Each social media datapoint was given the following labels:
+                    </p>
+                    <p>
+                        <ul>
+                            <li>
+                                Data Source: Facebook or Twitter
+                            </li>
+                            <li>
+                                Language:
+                                <ul>
+                                    <li>
+                                        English- text data point is purely in English.
+                                    </li>
+                                    <li>
+                                        Luganda - text data point is purely in Luganda.
+                                    </li>
+                                    <li>
+                                        Codeswitched- text data point contains words in English and Luganda or in English and Runyankole.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Misinformation: To model for misinformation analysis; four labels were used:
+                                <ul>
+                                    <li>
+                                        Fake - statement is misleading.
+                                    </li>
+                                    <li>
+                                        Not_Fake - statement is not misleading.
+                                    </li>
+                                    <li>
+                                        Partially Fake - part of the statement is misleading.
+                                    </li>
+                                    <li>
+                                        Others - scenarios where we couldn't prove whether the statement is false or not false.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Aspect: Topics on COVID-19 which included: COVID-19, Cases, Standard Operating
+                                Procedures (SOPs), Non-pharmaceutical Interventions (NPIs), Truck drivers, Hospitals,
+                                Vaccine, Elections, Treatment, Testing, COVID-19 Impact, Border, COVID-19 Relief,
+                                Presidential address, Death
+                            </li>
+                            <li>
+                                Sentiment: Tagged per Aspect with label of: Neutral, Positive and Negative.
+                            </li>
+                        </ul>
+                    </p>
+
+                    <img class="docano" src="{% static 'images/doc.png' %}" alt="">
+                    <p class="docano-p" style="font-size: 13px">
+                        <i>The figure above, shows an annotation of social media data in <strong>Luganda</strong> with the
+                        misinformation tagged as <strong>Not_Fake</strong> and the aspect identified being
+                        <strong>Vaccine</strong> with a <strong>Neutral</strong> sentiment.</i>
+                    </p>
+
+                    <p>
+                        After data annotation, we carried out an exploratory data analysis of the annotated data set
+                        that consisted of 11,000 text data points.The data obtained from Twitter contributed the
+                        highest percentage 51.4% compared to Facebook data with 48.6%. 93% of the annotated data
+                        points were in English while Luganda and Codemixed data points formed 5% and 1% respectively.
+                    </p>
+
+                    <div class="source">
+                        <img class="source-image" src="{% static 'images/source.jpg' %}" alt="">
+                        <p style="font-size: 13px; text-align: center; margin-bottom: 30px">
+                            <i>The figure above, shows the source of the Covid-19 Social Media Dataset</i>
+                        </p>
+
+                        <img class="source-image" src="{% static 'images/language.jpg' %}" alt="">
+                        <p style="font-size: 13px; text-align: center; margin-bottom: 30px">
+                            <i>The figure above, shows the language distribution for the Covid-19 Social Media Dataset</i>
+                        </p>
+                    </div>
+
+
+                    <p>To gain more insights from the data, we drafted research questions to guide the data analysis.</p>
+
+                    <p style="margin-top: 30px">
+                        <i><strong>Question 1: What is the spread of misinformation in the data obtained from Twitter
+                        compared to the data obtained from Facebook?</strong></i>
+                    </p>
+
+                    <p>
+                        To answer this question, we considered the misinformation label in the data. Much as Twitter
+                        data was more than the Facebook data in terms of quantity, most of the data tagged with the
+                        <strong>‘Fake’</strong>, and <strong>‘Partially Fake</strong>’ labels was the Facebook data. This can be attributed to the data
+                        that we obtained from Facebook that allowed us to include people’s comments to the Facebook
+                        posts compared to the Twitter data where we were restricted to only the posts made by the
+                        accounts scrapped. Moreover, Twitter has a limited tweet length of 280 characters compared
+                        to Facebook which means that while people make posts on Facebook, they are at liberty to write
+                        more which can turn out to be a source of misinformation. The demographic of Twitter and
+                        Facebook users is highly varied with more elites and corporate individuals on Twitter compared
+                        to Facebook. Corporates are more conscious about what they post and double check their posts or tweets.
+                    </p>
+
+                     <div class="source">
+                        <img class="source-image" src="{% static 'images/Msource.jpg' %}" alt="">
+                        <p style="font-size: 13px; text-align: center; margin-bottom: 30px">
+                            <i>The figure above, shows Misinformation reviewed by source</i>
+                        </p>
+                    </div>
+
+                    <p style="margin-top: 30px">
+                        <i><strong>Question 2: What is the spread of misinformation in the English social media data
+                            compared to Luganda or code switched data?</strong></i>
+                    </p>
+
+                    <p>
+                        A categorization based on language was made to compare the levels of misinformation
+                        associated with a particular language.
+                    </p>
+
+                    <p>
+                        From this analysis, it was observed that most of the ‘Fake’ and ‘Not Fake’ posts were
+                        written in <strong>English</strong> while most of the posts in <strong>Luganda</strong>
+                        and <strong>codemixed</strong> were tagged as ‘Not_Fake’ or ‘Others’.
+                    </p>
+
+                    <div class="source">
+                        <img class="source-image" src="{% static 'images/Mlanguage.jpg' %}" alt="">
+                        <p style="font-size: 13px; text-align: center; margin-bottom: 30px">
+                            <i>The figure above, shows Misinformation reviewed by language</i>
+                        </p>
+                    </div>
+
+                     <p style="margin-top: 30px">
+                        <i><strong>
+                            Question 3: What is the spread of misinformation in the social media data obtained in
+                            2020 compared to data obtained in 2021?
+                        </strong></i>
+                    </p>
+
+                    <p>
+                        Generally, we observe that we had more posts with the misinformation labels: ‘Fake’,
+                        and ‘Partially Fake’ in 2021 compared to 2020.
+                    </p>
+
+                    <div class="source">
+                        <img class="source-image" src="{% static 'images/Myear.jpg' %}" alt="">
+                        <p style="font-size: 13px; text-align: center; margin-bottom: 30px">
+                            <i>The figure above, shows Misinformation reviewed by year</i>
+                        </p>
+                    </div>
+
+                    <p>
+                        We also analyzed the misinformation data for 2021. From the data analysis, we observe
+                        that we had more posts labeled with misinformation in June and July 2021 compared to
+                        other months in the year. In June 2021, Uganda experienced its highest number of COVID-19
+                        cases and deaths. This was attributed to the emergence of the Delta variant in the country.
+                        Furthermore, all institutions of higher learning were closed in June and a 42 days lockdown
+                        was announced for the transport and business sector. The lockdown was then lifted towards
+                        the end of July, however, schools remained closed. Considering all the events that were going
+                        on in the country at that time, we observed that there were many posts made on social media
+                        platforms and part of the data had misinformation labels.
+                    </p>
+
+                    <p>
+                        Sample data points for that period:
+                    </p>
+
+                    <p>
+                        <i style="font-size: 16px">
+                            “Covid19 is now a fertile business in Uganda, continue getting the money you in government”.
+                        </i>
+                        <br>We observe that this post has misinformation on COVID-19. Our model was able to classify this
+                        post as “Fake” with a Negative sentiment.
+                    </p>
+
+                    <p>
+                        <i style="font-size: 16px">
+                            “Okunoonyereza okukoleddwa ekitongole kulaze nti obwelaliikirivu bweyongedde mu
+                            bannayuganda olwembeera yekirwadde kya Covid-19 ekiyinza okwongera embeera yokwennyika
+                            ssinakindi endwadde zemitwe mu ggwanga”.
+                        </i>
+                        <br>We observe that the post was about a research conducted on the impact of COVID-19.
+                        Our model was able to classify this post as “Not_Fake” with a Negative sentiment.
+                    </p>
+
+                    <p style="margin-top: 30px">
+                        <i><strong>
+                            Question 4: What is the correlation between the sentiments across different aspects in
+                            the social media dataset ?
+                        </strong></i>
+                    </p>
+
+                    <p>
+                        During the COVID-19 pandemic, a number of topics drove conversations on social media platforms.
+                        These aspects ranged from the COVID-19 symptoms, COVID-19 restrictions by the government and
+                        their effects. The posts and tweets made about COVID-19, Non Pharmaceutical Interventions (NPIs)
+                        which included closure of schools, businesses and curfew, and COVID-19 cases had more negative
+                        sentiments. All these aspects had a negative impact on the people which justifies the results
+                        obtained. For example, some were about closure of people’s business, deaths of loved ones and
+                        family members. Additionally aspects like COVID relief and treatment had positive sentiment
+                        this can be attributed to the food and cash relief issued by the government and the many
+                        recoveries witnessed from the COVID-19 patients.
+                    </p>
+
+                     <div class="source">
+                        <img class="source-image" src="{% static 'images/ser.jpg' %}" alt="">
+                        <p style="font-size: 13px; text-align: center; margin-bottom: 30px">
+                            <i>The figure above, shows the Distribution of Sentiment per Aspect from the Dataset</i>
+                        </p>
+                    </div>
+
+                    <p style="margin-top: 40px">
+                        <strong>In conclusion,</strong> we see the potential in analyzing social media data to understand
+                        people’s sentiments to COVID-19 and its mitigation strategies in the country. We also
+                        observe that there is potential for the use of social media data for the spread of
+                        misinformation and the need to build misinformation classification models based on
+                        machine learning.
+                    </p>
+
+                </div>
+            </div>
+
+            <div style="width:100%; height: 2px; color: #464646"></div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a class="text-muted" href="https://air.ug/" target="_blank"><strong>Makerere AI Lab</strong></a> &copy;
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://air.ug/" target="_blank">About the Lab</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://air.ug/projects/" target="_blank">Projects</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://air.ug/publications/" target="_blank">Publications</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://air.ug/contact/" target="_blank">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- <script src="https://code.highcharts.com/maps/highmaps.js"></script> -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <!-- <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/ug/ug-all.js"></script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+    <script src="./js/js.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+../env
+./env
+/.git
+/data
+/data/covid.csv
+/data/district_cases.py
+/data/district.csv
+/data/districtcases.csv
+/data/districtcases2.csv
+/data/districts_loader.py
+/data/events.csv
+/data/events.py
+/data/events.py

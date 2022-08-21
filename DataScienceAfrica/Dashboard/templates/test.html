@@ -1,0 +1,74 @@
+{% extends './base_layout.html' %}
+{% load static %}
+{% block content %}
+<main class="content">
+ <script>
+	   document.getElementById("test").classList.add("active")
+</script>
+	<div class="container-fluid p-0">
+        <div class ="align-self-center  mx-10">
+            <h1 >ML Classification Model that predicts flower class </h1>
+            <p>you enter the sepal-length, sepal-width, petal-length and petal-width (in cm) for the model predicts the class of the flower. the model uses the famous iris dataset</p>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+			<div class="col-12 col-lg-12 col-xxl-12 d-flex" style="margin: 20px;">
+                <input id="sl" type="number" min="0" max="15" placeholder="sepal-length" style="margin: 10px; height: 40px;width:150px">
+                <input id="sw" type="number" min="0" max="15" placeholder="sepal-width" style="margin: 10px; height: 40px;width:150px">
+                <input id="pl" type="number" min="0" max="15" placeholder="petal-length" style="margin: 10px; height: 40px;width:150px">
+                <input id="pw" type="number" min="0" max="15" placeholder="petal-width" style="margin: 10px; height: 40px;width:150px">
+                <button id="search" style="width=10px; height:50px">Search</button>
+            </div>
+            
+            <div class="col-12 col-lg-12 col-xxl-12 d-flex"  >
+            
+                <div class="card flex-fill w-50">
+                    <div class="card-header">
+						<h1 class="card-title my-1">Result</h1>
+					</div>
+                    <div class="align-self-center  mx-10">
+                    <span id="loader" hidden = "false"  class="text-info">
+						<img  style="width: 50px; height: auto;" src="{% static 'images/icons/loader.gif' %}"/>
+						Loading ...
+                        </span>
+						<h1 id="prediction">Enter Values to predict a flower class ..</h1>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script>
+    
+     var testurl = "{% url 'dashboard:test_api' %}"
+  
+     prediction = document.getElementById("prediction")
+     search = document.getElementById("search")
+
+     function predict(){
+        sl = document.getElementById("sl")
+        sw = document.getElementById("sw")
+        pl = document.getElementById("pl")
+        pw = document.getElementById("pw")
+        let loader = document.getElementById("loader")
+        loader.hidden = false
+        fetch(testurl+`?data=${sl.value},${sw.value},${pl.value},${pw.value}`)
+            .then(function(response){
+   
+                return response.json()
+
+            })
+            .then(function(x){
+                console.log(x)
+                prediction.innerText = x
+                loader.hidden = true
+            })
+     }
+     
+     document.addEventListener("DOMContentLoaded", function() {
+     		let btn = document.getElementById("search")
+     		btn.addEventListener("click",predict)
+   		});
+    
+    </script>
+</main>
+{% endblock %}

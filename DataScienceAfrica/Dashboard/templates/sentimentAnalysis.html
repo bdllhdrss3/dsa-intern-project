@@ -1,0 +1,127 @@
+{% extends './base_layout.html' %} {% load static %} {% block content %}
+<main class="content">
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3"><strong>Sentiment</strong> Analysis</h1>
+    <div class="row">
+      <div class="col-12 col-md-6 d-flex order-1 order-xxl-3">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Sentiment Analysis</h5>
+            <!-- <span class="text-muted" style="margin-top:10px">Enter any sentence of your choice</span> -->
+          </div>
+          <div class="card-body py-3">
+            <div class="chart chart-sm">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control ml-3"
+                  id="sentence-to-analyse"
+                  placeholder="Enter any sentence of your choice"
+                />
+                <button
+                  type="button"
+                  class="btn btn-dark btn-lg btn-block ml-3"
+                  style="width: 30%"
+                  id="check"
+                >
+                  Submit
+                </button>
+              </div>
+              <div class="justify-center text-center">
+                <span id="loading" hidden="true" class="text-info">
+                  <img
+                    style="width: 50px; height: auto"
+                    src="{% static 'images/icons/loader.gif' %}"
+                  />
+                  Loading ...</span
+                >
+              </div>
+              <h5 class="card-title text-muted mb-0" style="margin-top: 40px">
+                Sentence: <span id="sentence" class="text-dark"></span>
+              </h5>
+              <h5 class="card-title text-muted mb-0" style="margin-top: 20px">
+                Analysis: <span id="analysis" class="text-dark"></span>
+              </h5>
+              <h5 class="card-title text-muted mb-0" style="margin-top: 20px">
+                Impact: <span id="impact" class="text-dark"></span>
+              </h5>
+              <h5 class="card-title text-muted mb-0" style="margin-top: 20px">
+                Aspects: <span id="aspects" class="text-dark"></span>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 d-flex order-2 order-xxl-3">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              Statements that are false about Covid-19
+            </h5>
+          </div>
+          <div class="card-body py-3">
+            <div class="chart chart-sm">
+              <div class="row g-0 align-items-center">
+                <div class="col-10">
+                  <div class="text-dark">Deaths</div>
+                  <div class="text-muted small mt-1">
+                    2 people died of covid yesterday
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 align-items-center mt-2">
+                <div class="col-10">
+                  <div class="text-dark">Vaccines</div>
+                  <div class="text-muted small mt-1">
+                    The vaccine doesn't work
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 align-items-center mt-2">
+                <div class="col-10">
+                  <div class="text-dark">Pesidential Address</div>
+                  <div class="text-muted small mt-1">
+                    The President lied yesterday
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 align-items-center mt-2">
+                <div class="col-10">
+                  <div class="text-dark">Cases</div>
+                  <div class="text-muted small mt-1">
+                    The MOH is reporting wrong cases to the public
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 align-items-center mt-2">
+                <div class="col-10">
+                  <div class="text-dark">Recoveries</div>
+                  <div class="text-muted small mt-1">
+                    The number of recoveries reported is manipulated
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  {% comment %} var url = "{% url 'dashboard:dashboard_api' %}" {% endcomment %}
+  document.getElementById("sentiment").classList.add("active");
+  document.getElementById("title").innerText = "Sentiment Analysis";
+  var analysisUrl = "{% url 'dashboard:analysis_api' %}"
+</script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/ml.js' %}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let filterbtn = document.getElementById("check");
+    filterbtn.addEventListener("click", analyse);
+  });
+</script>
+{% endblock %}

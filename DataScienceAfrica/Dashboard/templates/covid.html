@@ -1,0 +1,197 @@
+{% extends './base_layout.html' %} {% load static %} {% block content %}
+<main class="content">
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+
+    <div class="row">
+      <div class="col-xl-6 col-xxl-5 d-flex">
+        <div class="w-100">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col mt-0">
+                      <h5 class="card-title my-0">Cases</h5>
+                      <span class="text-sm my-0" id="daily-update"></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="stat">
+                        <span class="material-icons">sick</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h1 class="mt-1 mb-3" id="recent_cases"></h1>
+                  <div class="mb-0">
+                    <span class="text-danger" id="recent_cases_increase"></span>
+                    <span id="daily-update-subtitle"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col mt-0">
+                      <h5 class="card-title">Deaths</h5>
+                    </div>
+                    <div class="col-auto">
+                      <div class="stat">
+                        <span class="material-icons">airline_seat_flat</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h1 class="mt-1 mb-3" id="deaths"></h1>
+                  <div class="mb-0">
+                    <span class="text-danger" id="deaths_increase"></span>
+                    <span
+                      class="text-muted"
+                      id="deaths_increase_subtitle"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col mt-0">
+                      <h5 class="card-title">Total Cases</h5>
+                    </div>
+                    <div class="col-auto">
+                      <div class="stat">
+                        <span class="material-icons">coronavirus</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h1 class="mt-1 mb-3" id="cases"></h1>
+                  <div class="mb-0">
+                    <span class="text-danger" id="total_cases"></span>
+                    <span class="text-muted" id="total_cases_subtitle"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col mt-0">
+                      <h5 class="card-title">Recoveries</h5>
+                    </div>
+                    <div class="col-auto">
+                      <div class="stat">
+                        <span class="material-icons">healing</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h1 class="mt-1 mb-3" id="recoveries"></h1>
+                  <div class="mb-0">
+                    <span
+                      class="text-warning"
+                      id="recoveries_percentage"
+                    ></span>
+                    <span
+                      class="text-muted"
+                      id="recoveries_percentage_subtitle"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-xxl-7 d-flex">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0">General Summary</h5>
+          </div>
+          <div class="card-body py-3">
+            <div class="chart chart-sm">
+              <div id="container1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-xxl-3">
+        <div class="card l w-100">
+          <div class="card-header">
+            <h5 class="card-title mt-1">Vaccination Summary</h5>
+            <span class="text-muted mt-1 mx-1">Since 09 March 2021 </span>
+          </div>
+          <div class="card-body mt-0">
+            <div class="col mt-0 py-1">
+              <div class="row">
+                <div class="">
+                  <span class="text-muted"> Total Vaccines Administered </span>
+                </div>
+                <h1 class="my-1 mb-4" id="total_vaccines"></h1>
+              </div>
+              <div class="row">
+                <div class="my-1">
+                  <span class="text-muted"> Fully vaccinated </span>
+                </div>
+                <h1 class="my-1 mb-4" id="fully_vaccinated"></h1>
+              </div>
+              <div class="row">
+                <div class="mt-1">
+                  <span class="text-muted"> Partially vaccinated </span>
+                </div>
+                <h1 class="mt-1 mb-3" id="Partially_vaccinated"></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-xxl-9">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Vaccination</h5>
+          </div>
+          <div class="card-body py-3">
+            <div class="chart chart-sm">
+              <div id="vaccination-graph"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12 d-flex order-3 order-xxl-2">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Cumulative Weekly Cases with Events</h5>
+          </div>
+          <div class="card-body px-4">
+            <div id="container2"></div>
+
+            <li><strong>PH: </strong>Public holiday</li>
+            <li><strong>PA: </strong>Presidential Address</li>
+            <li><strong>EV: </strong>Important Events</li>
+            <li><strong>SC: </strong>School opening / closing</li>
+            <li><strong>LD: </strong>Lockdowns</li>
+            <li><strong>OV: </strong>Omicron Variant</li>
+            <li><strong>DV: </strong>Delta Variant</li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+{% comment %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+{% endcomment %}
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script>
+  var url = "{% url 'dashboard:dashboard_api' %}";
+  document.getElementById("covid").classList.add("active");
+  document.getElementById("title").innerText = "Covid-19 Dashboard Uganda";
+</script>
+<script src="{% static 'js/js.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock %}
